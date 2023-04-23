@@ -1,0 +1,84 @@
+$color-brand: #333333;
+
+/* ----------- flex 布局相关 ---------------- */
+
+@mixin borderXT($w: 2px, $c: #fff) {
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    height: $w;
+    left: 0;
+    right: 0;
+    background: $c;
+    transform: scaleY(0.5);
+    transform-origin: 0, 0;
+    top: 0;
+    pointer-events: none;
+  }
+}
+
+@mixin borderXB($w: 2px, $c: #fff) {
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    height: $w;
+    left: 0;
+    right: 0;
+    background: $c;
+    transform: scaleY(0.5);
+    transform-origin: 0, 0;
+    bottom: 0;
+    pointer-events: none;
+  }
+}
+
+@mixin borderYL($w: 2px, $c: #fff) {
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    width: $w;
+    top: 0;
+    bottom: 0;
+    background: $c;
+    transform: scaleX(0.5);
+    transform-origin: 0, 0;
+    left: 0;
+    pointer-events: none;
+  }
+}
+@mixin borderYR($w: 2px, $c: #fff) {
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    width: $w;
+    top: 0;
+    bottom: 0;
+    background: $c;
+    transform: scaleX(0.5);
+    transform-origin: 0, 0;
+    right: 0;
+    pointer-events: none;
+  }
+}
+@mixin borderAll($w: 2px, $c: #fff, $br: 0, $zindex: auto) {
+  position: relative;
+  &::before {
+    z-index: $zindex;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    transform: scale(0.5);
+    transform-origin: left top;
+    border: $w solid $c;
+    border-radius: $br;
+    box-sizing: border-box;
+    pointer-events: none;
+  }
+}

@@ -1,0 +1,45 @@
+.container {
+  color: #fff;
+  border-top-right-radius: 6px;
+}
+.content {
+  justify-content: center;
+  align-items: center;
+}
+// .container:active{
+//   // outline: none;
+//   background: #208FC1;
+//   /*执行动画*/
+//   -webkit-animation: showBtn 0.5s infinite;
+//   animation: showBtn 0.5s infinite;
+//   /*停止在最后一帧*/
+//   // -webkit-animation-fill-mode: forwards;
+//   // animation-fill-mode: forwards;
+// }
+
+// @keyframes showBtn{
+//   10%{
+//     background: -webkit-radial-gradient(Circle,#1E7AA5 28%, #2287B7 30%, #2287B7 48%,#208FC1 60%);
+//     background: radial-gradient(Circle, #1E7AA5 28%, #2287B7 30%, #2287B7 48%,#208FC1 60%);
+//   } 
+//   20%{
+//     background: -webkit-radial-gradient(Circle,#1E7AA5 32%, #2287B7 34%, #2287B7 52%,#208FC1 60%);
+//     background: radial-gradient(Circle, #1E7AA5 32%, #2287B7 34%, #2287B7 52%,#208FC1 60%);
+//   }
+//   40%{
+//     background: -webkit-radial-gradient(Circle,#1E7AA5 34%, #2287B7 36%, #2287B7 54%,#208FC1 60%);
+//     background: radial-gradient(Circle, #1E7AA5 34%, #2287B7 36%, #2287B7 54%,#208FC1 60%);
+//   }
+//   60%{
+//     background: -webkit-radial-gradient(Circle,#1E7AA5 36%, #2287B7 38%, #2287B7 56%,#208FC1 60%);
+//     background: radial-gradient(Circle, #1E7AA5 36%, #2287B7 38%, #2287B7 56%,#208FC1 60%);
+//   }
+//   80%{
+//     background: -webkit-radial-gradient(Circle,#1E7AA5 38%, #2287B7 40%, #2287B7 58%,#208FC1 60%);
+//     background: radial-gradient(Circle, #1E7AA5 38%, #2287B7 40%, #2287B7 58%,#208FC1 60%);
+//   }
+//   100%{
+//     background: -webkit-radial-gradient(Circle,#1E7AA5 40%, #2287B7 42%, #2287B7 60%,#208FC1 60%);
+//     background: radial-gradient(Circle, #1E7AA5 40%, #2287B7 42%, #2287B7 60%,#208FC1 60%);
+//   }
+// }

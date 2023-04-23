@@ -1,11 +1,7 @@
-/**
- * request 网络请求工具
- * 更详细的 api 文档: https://github.com/umijs/umi-request
- */
-import type { RequestOptionsInit } from 'umi-request';
-import { extend } from 'umi-request';
-import { notification } from 'antd';
-// import { stringify } from 'querystring';
+import { store } from "@/store";
+import { General, request as taroRequest } from "@tarojs/taro";
+import { rootBase } from "../../config/proxy";
+import { filterNull, showMaskToast, toBigCamel, toSmallCamel } from "./utils";
 
 const codeMessage = {
   400: '发出的请求有错误，服务器没有进行新建或修改数据的操作。',
@@ -21,72 +17,97 @@ const codeMessage = {
   504: '网关超时。',
 };
 
+// 只有h5的网页需要代理
+const rootUrl = process.env.TARO_ENV === 'h5' ? '' : rootBase;
+
 /**
  * 异常处理程序
  */
-const errorHandler = (error: { response: Response }) => {
-  const { response } = error;
-  if (response && response.status) {
-    const errorText = codeMessage[response.status] || response.statusText;
+const errorHandler = (err: Taro.request.SuccessCallbackResult<IResponseData<unknown>>) => {
+  const { data, statusCode } = err
+  if (statusCode) {
+    const errorText = data.message || codeMessage[statusCode];
     return Promise.reject(new Error(errorText));
   }
   return Promise.reject(new Error('网络异常'));
 };
 
 /**
+ * 自己handle的错误
+ */
+// @ts-ignore
+const errorHandlerSelf = (err: ISmallCamel<Taro.request.SuccessCallbackResult<IResponseData<unknown>>['data']>) => {
+  switch (+err.code) {
+    case 10000:
+      showMaskToast('未登录')
+      return Promise.reject(new Error('未登录'));
+    case 10001:
+    showMaskToast('访问频繁')
+      return Promise.reject(new Error('访问频繁'));
+    case 10002:
+    showMaskToast(err.message)
+      return Promise.reject(new Error(err.message));
+    default:
+  }
+  return Promise.reject(err);
+}
+
+// type ICamelType = 'big' | 'small'
+/**
  * 配置request请求时的默认参数
  */
-const extendedrequest = extend({
-  getResponse: true, // 获取源数据
-  credentials: 'include', // 默认请求是否带上cookie
-});
 type IResponseData<T = any> = {
-  errno: number;
-  errmsg: string;
-  error_no: number;
-  error_msg: string;
-  err_msg: string;
-  url: string;
-  data: T;
-  err_no: number;
+  isSuccess: boolean;
+  message: string;
+  code: number;
+  data: T
 };
-
+type IOptions = {
+  method?: keyof Taro.request.method;
+  data?: IValue
+  header?: General.IAnyObject;
+  paramsToBigCamel?: boolean
+}
 /**
  * 对接口的返回值进行二次的封装
  * */
-const request = <T = any>(url: string, options?: RequestOptionsInit, selfError?: boolean) => {
-  return extendedrequest<IResponseData<T>>(url, options)
-    .then((res) => {
-      const { response, data } = res;
-      const { status } = response;
-      if ((status >= 200 && status < 300) || status === 304) {
-        if (+data.errno === 0) {
-          return data.data;
-        }
-        // 未登录的状态处理
-        if (+data.err_no === -1) {
-          window.location.href = '/datamap/login';
-          return Promise.reject(new Error(data.err_msg));
-        }
-        // if (selfError) {
-        //   return Promise.reject(data)
-        // }
-        // return errorHandler(res);
-      }
-      if (selfError) {
-        return Promise.reject(res);
-      }
-      return errorHandler(res);
-    })
-    .catch((err) => {
-      notification.error({
-        message: err.message || '未知错误',
-        description: err.message,
-      });
-      if (selfError) {
-        return Promise.reject(err);
-      }
-      return Promise.reject(err.message);
+export const request = async <T extends IValue = any, E = {}>(url: string, options: IOptions = {}) => {
+  const { paramsToBigCamel = true, data: params } = options;
+  let requestUrl = url.trim();
+  if (!/^(((ht|f)tps?):\/\/)?[\w-]+(\.[\w-]+)+([\w.,@?^=%&:/~+#-\(\)]*[\w@?^=%&/~+#-\(\)])?$/.test(requestUrl)) {
+    requestUrl = `${rootUrl}${requestUrl}`
+  }
+  const { common: { token } } = store.getState()
+  try {
+    const res = await taroRequest<IResponseData<T> & E>({
+      url: requestUrl,
+      method: options?.method || 'GET',
+      // @ts-ignore
+      data: filterNull(paramsToBigCamel ? toBigCamel(params || {}) : params),
+      header: filterNull({
+        ...options?.header,
+        Token: token?.val,
+        Cookie: `p_token=${token?.val}`
+      }),
     });
+    const {data, statusCode} = res;
+    const resData = toSmallCamel(data);
+    if(+statusCode <= 300 || +statusCode === 304) {
+      if (resData.isSuccess || +resData.code === 0) {
+        return resData
+      } else {
+        return errorHandlerSelf(resData)
+      }
+    } else {
+      return errorHandler(res)
+    }
+  } catch (error) {
+    showMaskToast('网络异常')
+    return Promise.reject(new Error('网络异常'))
+  }
 };
-export default request;
+
+// export const requestSmallCamel = () => {
+
+// }
+// export default request;

@@ -18,11 +18,23 @@
     "noUnusedParameters": true,
     "strictNullChecks": true,
     "sourceMap": true,
-    "baseUrl": ".",
+    "baseUrl": "./",
     "rootDir": ".",
     "jsx": "react-jsx",
     "allowJs": true,
     "resolveJsonModule": true,
+    "paths": {
+      "@/router": ["./src/router"],
+      "@/router/*": ["./src/router/*"],
+      "@/assets/*": ["./src/assets/*"],
+      "@/utils/*": ["./src/utils/*"],
+      "@/store": ["./src/store"],
+      "@/components": ["./src/components"],
+      "@/components/*": ["./src/components/*"],
+      "@/serves/*": ["./src/serves/*"]
+      // "@/request/*": ["./src/lib/request/*"],
+      // "@/api": ["./src/api"],
+    }
   },
   "exclude": ["node_modules", "build", "dist", "scripts", "src/.umi/*", "webpack", "jest"],
   "compileOnSave": false

@@ -12,10 +12,10 @@ export const getPageQuery = () => parse(window.location.href.split('?')[1]);
  * @param  {[object]} obj [params object]
  * @return {[string]}     [string]
  */
-export function serializeParams(obj: Record<string, string>) {
+export function serializeParams(obj?: Record<string, string>) {
   let str = '';
   // eslint-disable-next-line no-restricted-syntax
-  for (const [key, value] of Object.entries(obj)) {
+  for (const [key, value] of Object.entries(obj || {})) {
     str += `&${key}=${value}`;
   }
   return str;
@@ -108,3 +108,74 @@ export const showMaskToast = (title: string, icon: Taro.showToast.Option['icon']
       resolve();
     }, duration);
   });
+
+/**
+ * 对象大驼峰命名转小驼峰命名
+ * @param data 需要转的对象
+ * @returns 转完后的样子
+ */
+export const toSmallCamel = <T extends IDataObject>(data: T): ISmallCamel<T> => {
+  if (typeof data != 'object' || !data) return data  
+  if (Array.isArray(data)) {
+    // @ts-ignore
+    return data.map(item => toSmallCamel(item))
+  }
+  const newData = {}
+  for (let key in data) {
+    let newKey = key.replace(key[0], key[0].toLowerCase())
+    // @ts-ignore
+    newData[newKey] = toSmallCamel(data[key])
+  }
+  // @ts-ignore
+  return newData
+}
+
+/**
+ * 小驼峰对象转大驼峰
+ * @param data 需要转的对象
+ * @returns 转完之后的对象
+ */
+export const toBigCamel = <T extends IDataObject>(data: T): IBigCamel<T> => {
+  if (typeof data != 'object' || !data) return data
+  if (Array.isArray(data)) {
+    // @ts-ignore
+    return data.map(item => toBigCamel(item))
+  }
+  
+  const newData = {}
+  for (let key in data) {
+    let newKey = key.replace(key[0], key[0].toUpperCase())
+    // @ts-ignore
+    newData[newKey] = toBigCamel(data[key])
+  }
+  // @ts-ignore
+  return newData
+}
+
+/**
+ * 获取指定区间的随机数
+ * @param minNum 最小数
+ * @param maxNum 最大数
+ * @returns 
+ */
+export const getRandom = (minNum: number, maxNum: number) => {
+  return parseInt(Math.random() * (maxNum - minNum + 1) + minNum + '', 10); 
+}
+
+/**
+ * 对数据进行类型守卫的函数
+ * @param data 守卫的数据
+ * @param cb 判断守卫的函数，把能够确定的逻辑写进来，返回true就是确定这个类型
+ * @returns 第二个参数返回true为这个类型，否则不是
+ */
+ export const projectType = <T extends U, U = unknown>(data: U, cb: (arg: U) => boolean): data is T => {
+  return cb(data);
+};
+
+export const setLocalStorage = <K extends keyof IStorage>(key: K, data: IStorage[K]) => {
+  Taro.setStorageSync(key, data)
+}
+export const getLocalStorage = <K extends keyof IStorage>(key: K) => {
+  return Taro.getStorageSync<IStorage[K]>(key)
+}
+

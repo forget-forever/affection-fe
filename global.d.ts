@@ -53,3 +53,70 @@ declare type IOptions<V = string | number, L = string> = {
   label: L;
 }
 
+type IKey = string | number
+type IValue = IKey | boolean | object | undefined | null | object
+/**
+ * 对象的通用类型
+ */
+declare type IDataObject = Record<IKey, IValue>
+
+/**
+ * 转小驼峰
+ */
+declare type ISmallCamel<T extends IDataObject> = {
+  [K in keyof T as Uncapitalize<K>]: T[K] extends object ? ISmallCamel<T[K]> : T[K]
+}
+
+/**
+ * 转大驼峰
+ */
+declare type IBigCamel<T extends IDataObject> = {
+  [K in keyof T as Capitalize<K>]: T[K] extends object ? IBigCamel<T[K]> : T[K]
+}
+
+// type T1 = [{
+//   aBfafrV: number;
+//   afdsaG: {
+//     AaBfafrV: number;
+//     srgvA: string;
+//     AfgtF: boolean
+//   }[]
+//   afgtF: boolean
+// }]
+// type T2 = IBigCamel<T1>
+
+// const aa: T2 = [{
+//   AfdsaG: [{
+//     a
+//   }]
+// }]
+
+declare type IDateTime = `/Date(${number})/`
+
+// 取promise中的类型
+declare type PromiseData<D> = D extends Promise<infer R> ? R : never 
+
+// 取返回值是Promise中的值
+declare type PromiseReturn<F> = ReturnType<F> extends Promise<infer R> ? R : never 
+
+declare type OtherParameters<T extends (...args: any) => any> = T extends (f: any, ...args: infer P) => any ? P : never;
+
+declare namespace wx {
+  declare namespace miniProgram {
+    type navigateTo = typeof Taro.navigateTo
+  }
+}
+
+declare type ITabBar = {
+  color: string;
+  selectedColor: string;
+  backgroundColor: string;
+  list: {
+    selectedIconPath: string;
+    selectedIconUrl: string;
+    iconPath: string;
+    iconUrl: string;
+    pagePath: string;
+    text: string;
+  }[];
+}

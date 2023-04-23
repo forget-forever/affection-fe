@@ -1,3 +1,5 @@
+import path from 'path';
+
 const config = {
   projectName: 'affection-fe',
   date: '2021-10-15',
@@ -8,7 +10,15 @@ const config = {
     828: 1.81 / 2
   },
   sourceRoot: 'src',
-  outputRoot: 'dist',
+  outputRoot: `dist/${process.env.TARO_ENV}`,
+  alias: {
+    '@/router': path.resolve(__dirname, '..', 'src/router'),
+    '@/assets': path.resolve(__dirname, '..', 'src/assets'),
+    '@/utils': path.resolve(__dirname, '..', 'src/utils'),
+    '@/store': path.resolve(__dirname, '..', 'src/store'),
+    '@/components': path.resolve(__dirname, '..', 'src/components'),
+    '@/serves': path.resolve(__dirname, '..', 'src/serves')
+  },
   plugins: [],
   defineConstants: {
   },
@@ -19,6 +29,9 @@ const config = {
     }
   },
   framework: 'react',
+  sass: {
+    resource: path.resolve(__dirname, '..', 'src/utils/sass/index.scss'),
+  },
   mini: {
     postcss: {
       pxtransform: {
@@ -34,13 +47,16 @@ const config = {
         }
       },
       cssModules: {
-        enable: false, // 默认为 false，如需使用 css modules 功能，则设为 true
+        enable: true, // 默认为 false，如需使用 css modules 功能，则设为 true
         config: {
           namingPattern: 'module', // 转换模式，取值为 global/module
-          generateScopedName: '[name]__[local]___[hash:base64:5]'
+          generateScopedName: '[local]_[hash:base64:5]'
         }
       }
-    }
+    },
+    cssLoaderOption: {
+      localsConvention: 'camelCase',
+    },
   },
   h5: {
     publicPath: '/',
@@ -52,13 +68,17 @@ const config = {
         }
       },
       cssModules: {
-        enable: false, // 默认为 false，如需使用 css modules 功能，则设为 true
+        enable: true, // 默认为 false，如需使用 css modules 功能，则设为 true
         config: {
           namingPattern: 'module', // 转换模式，取值为 global/module
-          generateScopedName: '[name]__[local]___[hash:base64:5]'
+          generateScopedName: '[local]_[hash:base64:5]'
         }
       }
-    }
+    },
+    esnextModules: ['taro-ui'],
+    cssLoaderOption: {
+      localsConvention: 'camelCase',
+    },
   }
 }
 

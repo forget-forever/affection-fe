@@ -1,0 +1,56 @@
+$color-brand: #333333;
+@import '~taro-ui/dist/style/components/indexes.scss';
+@import '~taro-ui/dist/style/components/list.scss';
+@import '~taro-ui/dist/style/components/icon.scss';
+@import '~taro-ui/dist/style/components/toast.scss';
+@import '~taro-ui/dist/style/components/nav-bar.scss';
+@import '~taro-ui/dist/style/components/avatar.scss';
+@import '~taro-ui/dist/style/components/tab-bar.scss';
+@import '~taro-ui/dist/style/components/badge.scss';
+@import './utils/sass/iconfonts.css';
+
+div,
+view,
+text,
+taro-view-core,
+taro-scroll-view-core,
+scroll-view {
+  box-sizing: border-box;
+}
+.self-modal_container .at-modal__container {
+  width: 95%;
+}
+.at-modal__container {
+  top: 45%;
+}
+.at-nav-bar__title {
+  color: #fff;
+}
+button[type=primary], taro-button-core[type=primary], .button-hover[type=primary], button[loading][type=primary]  {
+  background-color: $color-brand !important;
+}
+button[disabled][type=primary], taro-button-core[disabled][type=primary] {
+  background-color: $color-brand !important;
+  opacity: 0.6;
+}
+button[loading][type=primary], taro-button-core[loading][type=primary] {
+  opacity: 0.6;
+}
+.warp{
+  box-sizing: border-box;
+}
+
+.at-nav-bar__left-view {
+  background-color: $color-brand !important;
+}
+.at-modal__content {
+  min-height: 10px;
+}
+
+view, form, page {
+  box-sizing: border-box;
+}
+
+.iconfont {
+  font-size: 32px;
+}

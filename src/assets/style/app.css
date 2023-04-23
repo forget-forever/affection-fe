@@ -1,0 +1,623 @@
+page, html {
+  border: 0;
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+  --maincolor: #333;
+  --red: #e54d42;
+  --orange: #f37b1d;
+  --yellow: #fbbd08;
+  --olive: #8dc63f;
+  --green: #39b54a;
+  --cyan: #1cbbb4;
+  --blue: #0081ff;
+  --purple: #6739b6;
+  --mauve: #9c26b0;
+  --pink: #e03997;
+  --brown: #a5673f;
+  --grey: #8799a3;
+  --gray: #aaa;
+  --black: #333;
+  --white: #fff;
+  --gradualRed: linear-gradient(45deg, #f43f3b, #ec008c);
+  --gradualOrange: linear-gradient(45deg, #ff9700, #ed1c24);
+  --gradualGreen: linear-gradient(45deg, #39b54a, #8dc63f);
+  --gradualPurple: linear-gradient(45deg, #9000ff, #5e00ff);
+  --gradualPink: linear-gradient(45deg, #ec008c, #6739b6);
+  --gradualBlue: linear-gradient(45deg, #0081ff, #1cbbb4);
+}
+
+.border-box {
+    box-sizing: border-box;
+}
+
+/* ==================
+          背景
+ ==================== */
+ .line-main::after, .lines-main::after {
+  border-color: var(--maincolor);
+}
+
+.line-red::after, .lines-red::after {
+  border-color: var(--red);
+}
+
+.line-orange::after, .lines-orange::after {
+  border-color: var(--orange);
+}
+
+.line-yellow::after, .lines-yellow::after {
+  border-color: var(--yellow);
+}
+
+.line-olive::after, .lines-olive::after {
+  border-color: var(--olive);
+}
+
+.line-green::after, .lines-green::after {
+  border-color: var(--green);
+}
+
+.line-cyan::after, .lines-cyan::after {
+  border-color: var(--cyan);
+}
+
+.line-blue::after, .lines-blue::after {
+  border-color: var(--blue);
+}
+
+.line-purple::after, .lines-purple::after {
+  border-color: var(--purple);
+}
+
+.line-mauve::after, .lines-mauve::after {
+  border-color: var(--mauve);
+}
+
+.line-pink::after, .lines-pink::after {
+  border-color: var(--pink);
+}
+
+.line-brown::after, .lines-brown::after {
+  border-color: var(--brown);
+}
+
+.line-grey::after, .lines-grey::after {
+  border-color: var(--grey);
+}
+
+.line-gray::after, .lines-gray::after {
+  border-color: var(--grey);
+}
+
+.line-black::after, .lines-black::after {
+  border-color: var(--black);
+}
+
+.line-white::after, .lines-white::after {
+  border-color: var(--white)
+}
+
+.bg-main {
+  background-color: var(--maincolor);
+  color: #fff;
+}
+
+.bg-red {
+  background-color: var(--red);
+  color: #fff;
+}
+
+.bg-orange {
+  background-color: var(--orange);
+  color: #fff;
+}
+
+.bg-yellow {
+  background-color: var(--yellow);
+  color: var(--black);
+}
+
+.bg-olive {
+  background-color: var(--olive);
+  color: #fff;
+}
+
+.bg-green {
+  background-color: var(--green);
+  color: #fff;
+}
+
+.bg-cyan {
+  background-color: var(--cyan);
+  color: #fff;
+}
+
+.bg-blue {
+  background-color: var(--blue);
+  color: #fff;
+}
+
+.bg-purple {
+  background-color: var(--purple);
+  color: #fff;
+}
+
+.bg-mauve {
+  background-color: var(--mauve);
+  color: #fff;
+}
+
+.bg-pink {
+  background-color: var(--pink);
+  color: #fff;
+}
+
+.bg-brown {
+  background-color: var(--brown);
+  color: #fff;
+}
+
+.bg-grey {
+  background-color: var(--grey);
+  color: #fff;
+}
+
+.bg-gray {
+  background-color: #f0f0f0;
+  color: #666;
+}
+
+.bg-black {
+  background-color: var(--black);
+  color: #fff;
+}
+
+.bg-white {
+  background-color: #fff;
+  color: #666;
+}
+
+.bg-shadeTop {
+  background-image: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.01));
+  color: #fff;
+}
+
+.bg-shadeBottom {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 1));
+  color: #fff;
+}
+
+.bg-main .light{
+  color: var(--maincolor);
+  background-color: #ebd4ef;
+}
+
+.bg-red.light {
+  color: var(--red);
+  background-color: #fadbd9;
+}
+
+.bg-orange.light {
+  color: var(--orange);
+  background-color: #fde6d2;
+}
+
+.bg-yellow.light {
+  color: var(--yellow);
+  background-color: #fef2ce;
+}
+
+.bg-olive.light {
+  color: var(--olive);
+  background-color: #e8f4d9;
+}
+
+.bg-green.light {
+  color: var(--green);
+  background-color: #d7f0db;
+}
+
+.bg-cyan.light {
+  color: var(--cyan);
+  background-color: #d2f1f0;
+}
+
+.bg-blue.light {
+  color: var(--blue);
+  background-color: #cce6ff;
+}
+
+.bg-purple.light {
+  color: var(--purple);
+  background-color: #e1d7f0;
+}
+
+.bg-mauve.light {
+  color: var(--mauve);
+  background-color: #ebd4ef;
+}
+
+.bg-pink.light {
+  color: var(--pink);
+  background-color: #f9d7ea;
+}
+
+.bg-brown.light {
+  color: var(--brown);
+  background-color: #ede1d9;
+}
+
+.bg-grey.light {
+  color: var(--grey);
+  background-color: #e7ebed;
+}
+
+.bg-gray.light {
+  color: #666;
+  background-color: #fadbd9;
+}
+
+.bg-gray.light {
+  color: #888;
+  background-color: #f1f1f1;
+}
+
+.bg-gradual-red {
+  background-image: var(--gradualRed);
+  color: #fff;
+}
+
+.bg-gradual-orange {
+  background-image: var(--gradualOrange);
+  color: #fff;
+}
+
+.bg-gradual-green {
+  background-image: var(--gradualGreen);
+  color: #fff;
+}
+
+.bg-gradual-purple {
+  background-image: var(--gradualPurple);
+  color: #fff;
+}
+
+.bg-gradual-pink {
+  background-image: var(--gradualPink);
+  color: #fff;
+}
+
+.bg-gradual-blue {
+  background-image: var(--gradualBlue);
+  color: #fff;
+}
+.text-blue {
+    color: var(--blue);
+}
+
+/* ==================
+          字体
+ ==================== */
+.text-cut {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-content {
+  line-height: 1.6;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-main, .line-main, .lines-main {
+  color: var(--maincolor);
+}
+
+.text-red, .line-red, .lines-red {
+  color: var(--red);
+}
+
+.text-orange, .line-orange, .lines-orange {
+  color: var(--orange);
+}
+
+.text-yellow, .line-yellow, .lines-yellow {
+  color: var(--yellow);
+}
+
+.text-olive, .line-olive, .lines-olive {
+  color: var(--olive);
+}
+
+.text-green, .line-green, .lines-green {
+  color: var(--green);
+}
+
+.text-cyan, .line-cyan, .lines-cyan {
+  color: var(--cyan);
+}
+
+.text-blue, .line-blue, .lines-blue {
+  color: var(--blue);
+}
+
+.text-purple, .line-purple, .lines-purple {
+  color: var(--purple);
+}
+
+.text-mauve, .line-mauve, .lines-mauve {
+  color: var(--mauve);
+}
+
+.text-pink, .line-pink, .lines-pink {
+  color: var(--pink);
+}
+
+.text-brown, .line-brown, .lines-brown {
+  color: var(--brown);
+}
+
+.text-grey, .line-grey, .lines-grey {
+  color: var(--grey);
+}
+
+.text-gray, .line-gray, .lines-gray {
+  color: var(--grey);
+}
+
+.text-black, .line-black, .lines-black {
+  color: var(--black);
+}
+
+.text-white, .line-white, .lines-white {
+  color: #fff;
+}
+
+.text-shadow {
+  text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.4);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-content {
+  line-height: 1;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+
+.text-xs {
+  font-size: 0.625rem;
+}
+
+.text-sm {
+  font-size: 0.75rem;
+}
+
+.text-df {
+  font-size: 0.8rem;
+}
+
+.text-lg {
+  font-size: 1rem;
+}
+
+.text-xl {
+  font-size: 1.125rem;
+}
+
+.text-xxl {
+  font-size: 1.375rem;
+}
+
+.text-sl {
+  font-size: 2.5rem;
+}
+
+.text-xsl {
+  font-size: 3.75rem;
+}
+
+.text-Abc {
+  text-transform: Capitalize;
+}
+
+.text-ABC {
+  text-transform: Uppercase;
+}
+
+.text-abc {
+  text-transform: Lowercase;
+}
+
+
+/* ==================
+          其他的自定义的样式
+ ==================== */
+.block {
+    display: block; }
+
+.show {
+    display: block; }
+
+.hide {
+    display: none; }
+
+.inline {
+    display: inline; }
+
+.iblock {
+    display: inline-block;
+}
+
+.tleft {
+    text-align: left; }
+
+.tright {
+    text-align: right; }
+
+.tcenter {
+    text-align: center; }
+
+.center {
+    margin:0 auto; }
+
+.hole-width{
+  width: 100vw;
+}
+
+.max-height{
+  height: 100%;
+}
+
+.scroll-auto{
+  overflow-y: auto;
+}
+
+.block{
+  display: block;
+}
+
+.flex{
+  display: flex;
+}
+
+.flex-center{
+  align-items: center;
+  justify-content: center;
+}
+
+.inline{
+  display: inline;
+}
+
+.inline-block{
+  display: inline-block;
+}
+
+.margin-top{
+  margin-top: 15px;
+}
+
+.width-95{
+  width: 95%;
+  margin: 0 auto;
+}
+
+.width-85{
+  width: 85%;
+  margin: 0 auto;
+}
+
+.width-75{
+  width: 75%;
+  margin: 0 auto;
+}
+
+.width-65{
+  width: 65%;
+  margin: 0 auto;
+}
+
+.width-9{
+  width: 90%;
+  margin: 0 auto;
+}
+
+.width-8{
+  width: 80%;
+  margin: 0 auto;
+}
+
+.width-7{
+  width: 70%;
+  margin: 0 auto;
+}
+
+.width-6{
+  width: 60%;
+  margin: 0 auto;
+}
+
+.float-left{
+  float: left;
+}
+
+.float-right{
+  float: right;
+}
+
+.line-ellipsis{
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+input, textarea{
+  resize: none;
+  outline: none;
+}
+
+.fixed{
+  position: fixed;
+}
+
+.absolute{
+  position: absolute;
+}
+
+.sticky {
+  position: sticky;
+}
+
+.relative {
+  position: relative;
+}
+
+.hidden {
+  overflow: hidden;
+}
+
+.emoji{
+  width: 28px;
+  height: 28px;
+  mix-blend-mode: screen;
+}
+
+.emoji-1{
+  width: 18px;
+  height: 18px;
+  margin: 0 1px;
+}
+
+.align-items {
+  align-items: center;
+}
+
+.justify-content {
+    justify-content: center;
+}

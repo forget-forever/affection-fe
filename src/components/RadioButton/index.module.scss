@@ -1,0 +1,33 @@
+.radio-block {
+  display: flex;
+  width: 100%;
+  white-space: nowrap;
+  align-items: center;
+}
+
+.radio-title {
+  display: flex;
+  font-size: 32px;
+  width: 80px;
+}
+
+.label-block {
+  width: calc(100% - 80px);
+  overflow-x: auto;
+  line-height: 1;
+  /* 隐藏滚动条 */
+  overflow: -moz-hidden-unscrollable; /* fire fox */
+  -ms-overflow-style: none; /* ie 10+ */
+}
+
+/* Chrome */
+.label-block::-webkit-scrollbar {
+  display: none; 
+}
+
+.radio-label {
+  display: flex;
+  margin: 0 3px;
+  padding: 0 6px;
+  font-size: 16px;
+}
