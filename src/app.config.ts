@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-commonjs
-const { tabBar } = require('./config')
+// const { tabBar } = require('./config')
 
 const uniquePages = {
   h5: [ 'pages/h5pages/index/index'] as const,
@@ -38,5 +38,5 @@ export default {
     navigationBarTitleText: '情意盲盒',
     navigationBarTextStyle: 'white'
   },
-  tabBar: tabBar,
+  // tabBar: tabBar,
 }
