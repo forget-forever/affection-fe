@@ -54,9 +54,14 @@ const config = {
         }
       }
     },
-    cssLoaderOption: {
-      localsConvention: 'camelCase',
-    },
+    cssLoader: {
+      options: {
+        camelCase: true,
+      },
+    }
+    // cssLoaderOption: {
+    //   localsConvention: 'camelCase',
+    // },
   },
   h5: {
     publicPath: '/',
@@ -76,9 +81,14 @@ const config = {
       }
     },
     esnextModules: ['taro-ui'],
-    cssLoaderOption: {
-      localsConvention: 'camelCase',
-    },
+    // cssLoaderOption: {
+    //   localsConvention: 'camelCase',
+    // },
+    cssLoader: {
+      options: {
+        camelCase: true,
+      },
+    }
   }
 }
 

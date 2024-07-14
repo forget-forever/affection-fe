@@ -1,7 +1,8 @@
 // import { PageContainer } from '@/components'
+import { PageContainer } from '@/components';
 import useData from '@/utils/hooks/useData'
-import { WebView } from '@tarojs/components'
 import React, { useEffect, useMemo } from 'react'
+import { Star } from './components';
 // import { Filter, Join, Star } from './components'
 
 const Index: React.FC = () => {
@@ -29,12 +30,12 @@ const Index: React.FC = () => {
   }, [])
   
   return (
-    // <PageContainer hideNavigate>
-    //   {/* <Star /> */}
-    //   <Filter />
-    //   <Join />
-    // </PageContainer>
-    <WebView onMessage={(e) => {console.log(e)}} src={src} ></WebView>
+    <PageContainer hideNavigate>
+      <Star />
+      {/* <Filter />
+      <Join /> */}
+    </PageContainer>
+    // <WebView onMessage={(e) => {console.log(e)}} src={src} ></WebView>
   )
 }
 export default Index

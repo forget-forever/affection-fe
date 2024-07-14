@@ -36,6 +36,7 @@ const GetPhone: React.FC<IProps> = (props) => {
     describe = '尚未绑定个人信息，没有绑定个人信息的时，无法使用小程序的全部功能。'
   } = props;
   const { openId } = useData((state) => state.common)
+  
   return (
     <>
     {describe}
