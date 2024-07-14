@@ -5,8 +5,8 @@ import { setState } from '@/store'
 import { PageContainer } from '@/components'
 import Star from './components/Star'
 import styles from './index.module.scss'
-import Join from './components/Join'
-import Filter from './components/Filter'
+// import Join from './components/Join'
+// import Filter from './components/Filter'
 
 
 
@@ -24,9 +24,9 @@ const Index: React.FC = () => {
   return (
     <PageContainer hideNavigate>
       <View className={styles.container}>
-        {/* <Star /> */}
-        <Filter />
-        <Join />
+        <Star />
+        {/* <Filter />
+        <Join /> */}
       </View>
     </PageContainer>
   )
