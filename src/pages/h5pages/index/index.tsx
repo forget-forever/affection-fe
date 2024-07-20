@@ -10,6 +10,7 @@ import styles from './index.module.scss'
 
 
 
+console.log(styles);
 
 const Index: React.FC = () => {
 
