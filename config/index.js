@@ -72,13 +72,13 @@ const config = {
         config: {
         }
       },
-      cssModules: {
-        enable: true, // 默认为 false，如需使用 css modules 功能，则设为 true
-        config: {
-          namingPattern: 'module', // 转换模式，取值为 global/module
-          generateScopedName: '[local]_[hash:base64:5]'
-        }
-      }
+      // cssModules: {
+      //   enable: true, // 默认为 false，如需使用 css modules 功能，则设为 true
+      //   config: {
+      //     namingPattern: 'module', // 转换模式，取值为 global/module
+      //     generateScopedName: '[local]_[hash:base64:5]'
+      //   }
+      // }
     },
     esnextModules: ['taro-ui'],
     // cssLoaderOption: {
