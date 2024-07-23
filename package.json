@@ -38,6 +38,7 @@
     "@babel/runtime": "7.15.4",
     "@tarojs/components": "3.6.34",
     "@tarojs/plugin-framework-react": "^3.6.34",
+    "@tarojs/plugin-platform-h5": "^3.6.34",
     "@tarojs/react": "3.6.34",
     "@tarojs/runtime": "3.6.34",
     "@tarojs/taro": "3.6.34",
