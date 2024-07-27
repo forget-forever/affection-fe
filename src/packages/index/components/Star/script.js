@@ -55,7 +55,7 @@ export function init(dom) {
     controls.enablePan = false;
 
     const loader = new THREE.TextureLoader();
-    const texturenucleus = loader.load('https://oss.aiquyin.com/ContactMe/Images/moon.png');
+    const texturenucleus = loader.load('https://status.zhoumeilei.cn/webgl/moon.png');
     
     const texture1 = loader.load("https://i.ibb.co/F8by6wW/p2-b3gnym.png");  
     const texture2 = loader.load("https://i.ibb.co/yYS2yx5/p3-ttfn70.png");
