@@ -1,6 +1,6 @@
 import { getRandom } from '@/utils/utils'
 import * as THREE from './three.min_mini'
-import './OrbitControls';
+import {initOrbit} from './OrbitControls';
 
 let renderer,
 scene,
@@ -11,23 +11,33 @@ stars = [],
 controls,
 container;
 
-const getAvatarUrl = () => {
-    return `https://oss.aiquyin.com/ContactMe/Images/Headers/circle/pic${getRandom(0, 470)}.png?x-oss-process=style/thumb64x64`
-}
+// initOrbit(THREE)
+
+
+// const getAvatarUrl = () => {
+//     return `https://oss.aiquyin.com/ContactMe/Images/Headers/circle/pic${getRandom(0, 470)}.png?x-oss-process=style/thumb64x64`
+// }
 
 export const touchStart = function(e) {
-  THREE.global.touchEventHandlerFactory('canvas', 'touchstart')(e)
+//   THREE.global.touchEventHandlerFactory('canvas', 'touchstart')(e)
 }
 export const touchMove = function(e) {
-  THREE.global.touchEventHandlerFactory('canvas', 'touchmove')(e)
+//   THREE.global.touchEventHandlerFactory('canvas', 'touchmove')(e)
 }
 export const touchEnd = function(e) {
-  THREE.global.touchEventHandlerFactory('canvas', 'touchend')(e)
+//   THREE.global.touchEventHandlerFactory('canvas', 'touchend')(e)
 }
 
 
 export function init(dom) {
+    
     container = THREE.global.registerCanvas(dom)
+    // container = dom;
+    // const THREE = createScopedThreejs(dom);
+
+    
+
+    initOrbit(THREE)
     scene = new THREE.Scene();
 
     camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.01, 1000)
@@ -38,6 +48,7 @@ export function init(dom) {
     scene.add(ambientLight);
 
     renderer = new THREE.WebGLRenderer({
+        canvas: dom,
         antialias: true,
         alpha: true,
     });
@@ -81,32 +92,32 @@ export function init(dom) {
     scene.add(sphereBg);
 
     /*    Moving Stars   */
-    const getStarsGeometry = () => {
-        let starsGeometry = new THREE.Geometry();
-        let particleStar = randomPointSphere(150); 
-        // particleStar.velocity = THREE.MathUtils.randInt(50, 200);
+    // const getStarsGeometry = () => {
+    //     let starsGeometry = new THREE.Geometry();
+    //     let particleStar = randomPointSphere(150); 
+    //     // particleStar.velocity = THREE.MathUtils.randInt(50, 200);
 
-        particleStar.velocity = getRandom(50, 200)
-        particleStar.startX = particleStar.x;
-        particleStar.startY = particleStar.y;
-        particleStar.startZ = particleStar.z;
+    //     particleStar.velocity = getRandom(50, 200)
+    //     particleStar.startX = particleStar.x;
+    //     particleStar.startY = particleStar.y;
+    //     particleStar.startZ = particleStar.z;
 
-        starsGeometry.vertices.push(particleStar);
-        return starsGeometry
-    }
+    //     starsGeometry.vertices.push(particleStar);
+    //     return starsGeometry
+    // }
 
     // 生成头像
-    for(let i = 0; i < 70; i++) {
-        let url = getAvatarUrl();
-        let starsMaterial = new THREE.PointsMaterial({
-            size: 10,
-            map: loader.load(url),
-            blending: THREE.AdditiveBlending,
-        });
-        starsMaterial.depthWrite = false;
-        stars[i] = new THREE.Points(getStarsGeometry(), starsMaterial);
-        scene.add(stars[i]);
-    }
+    // for(let i = 0; i < 70; i++) {
+    //     let url = getAvatarUrl();
+    //     let starsMaterial = new THREE.PointsMaterial({
+    //         size: 10,
+    //         map: loader.load(url),
+    //         blending: THREE.AdditiveBlending,
+    //     });
+    //     starsMaterial.depthWrite = false;
+    //     stars[i] = new THREE.Points(getStarsGeometry(), starsMaterial);
+    //     scene.add(stars[i]);
+    // }
 
     /*    Fixed Stars   */
     function createStars(texture, size, total) {
@@ -125,7 +136,7 @@ export function init(dom) {
         }
         return new THREE.Points(pointGeometry, pointMaterial);
     }
-    scene.add(createStars(texture1, 15, 20));   
+    scene.add(createStars(texture1, 15, 20));
     scene.add(createStars(texture2, 5, 5));
     scene.add(createStars(texture4, 7, 5));
 
@@ -139,7 +150,7 @@ export function init(dom) {
         return new THREE.Vector3(dx, dy, dz);
     }
     function destory () {
-        THREE.global.unregisterCanvas(container._canvasId)
+        // THREE.global.unregisterCanvas(container._canvasId)
     }
     return destory
 }
