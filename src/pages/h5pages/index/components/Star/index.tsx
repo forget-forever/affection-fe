@@ -22,20 +22,18 @@ const Star: React.FC = () => {
     return { offsetX: x, offsetY: y };
   }, [])
 
-  return <>
-    {/* eslint-disable-next-line react/forbid-elements */}
-    <div
-      id='myCanvas'
-      style={{
-        height: `calc(100vh + ${offsetY}px)`,
-        width: `calc(100vw + ${offsetX}px)`,
-        position: 'relative',
-        bottom: `${offsetY}px`,
-        right: `${offsetX / 2}px`,
-      }}
-    >
+  // eslint-disable-next-line react/forbid-elements
+  return <div
+    id='myCanvas'
+    style={{
+      height: `calc(100vh + ${offsetY}px)`,
+      width: `calc(100vw + ${offsetX}px)`,
+      position: 'relative',
+      bottom: `${offsetY}px`,
+      right: `${offsetX / 2}px`,
+    }}
+  >
       <canvas style={{display: 'none'}}></canvas>
     </div>
-  </>
 }
 export default Star

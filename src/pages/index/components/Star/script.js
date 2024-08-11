@@ -19,13 +19,13 @@ container;
 // }
 
 export const touchStart = function(e) {
-//   THREE.global.touchEventHandlerFactory('canvas', 'touchstart')(e)
+  THREE.global.touchEventHandlerFactory('canvas', 'touchstart')(e)
 }
 export const touchMove = function(e) {
-//   THREE.global.touchEventHandlerFactory('canvas', 'touchmove')(e)
+  THREE.global.touchEventHandlerFactory('canvas', 'touchmove')(e)
 }
 export const touchEnd = function(e) {
-//   THREE.global.touchEventHandlerFactory('canvas', 'touchend')(e)
+  THREE.global.touchEventHandlerFactory('canvas', 'touchend')(e)
 }
 
 
